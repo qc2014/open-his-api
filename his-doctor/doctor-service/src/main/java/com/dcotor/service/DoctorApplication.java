@@ -1,6 +1,5 @@
 package com.dcotor.service;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
