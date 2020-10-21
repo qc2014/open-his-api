@@ -1,0 +1,59 @@
+#项目端口配置
+server:
+  port: 8080
+#spring配置：
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/bjsxt-his?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      max-active: 20
+      min-idle: 5
+      validation-query: select x
+      initial-size: 3
+      max-wait: 5000
+      stat-view-servlet:
+      # login-username: root
+      # login-password: 123456
+      allow:
+      deny:
+      url-pattern: /druid/*
+      enabled: true
+
+#shiro 配置
+shiro:
+#login-url: /index.html
+#放行请求
+anon-urls:
+  - /login/doLogin*
+  - /login/captcha*
+  - /login/logout*
+  - /pay/callback*/**
+  # - /system/upload/*
+  - /druid/**
+authc-urls:
+  - /**
+
+#MyBatis Plus的配置
+mybatis-plus:
+  configuration:
+    #    输出sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*Mapper.xml
+  #  id自动生成
+  global-config:
+    db-config:
+      id-type: auto
+
+#dubbo 配置
+dubbo:
+  application:
+    name: his-erp-service
+  registry:
+    address: zookeeper://192.168.157.135:2181
+  consumer:
+    check: false
+
